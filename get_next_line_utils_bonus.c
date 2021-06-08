@@ -6,7 +6,7 @@
 /*   By: szawi <szawi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/20 14:04:30 by szawi             #+#    #+#             */
-/*   Updated: 2021/03/01 15:14:02 by szawi            ###   ########.fr       */
+/*   Updated: 2021/06/08 16:08:28 by szawi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ char	*ft_strdup(const char *s, int c)
 
 	if (!s)
 		return (NULL);
-	else if (!(str = malloc(ft_strlen(s) + 1)))
+	str = malloc(ft_strlen(s) + 1);
+	if (!str)
 		return (NULL);
 	i = 0;
 	while (s[i] && s[i] != (char)c)
@@ -50,7 +51,8 @@ char	*ft_strjoin(const char *all, const char *buff)
 	if (!buff)
 		return (NULL);
 	len = ft_strlen(all) + ft_strlen(buff) + 1;
-	if (!(str = malloc(len)))
+	str = malloc(len);
+	if (!str)
 		return (NULL);
 	len = 0;
 	while (all && all[len])
@@ -84,7 +86,7 @@ void	ft_add_to_line(char **all, char **line)
 		free(tmp);
 }
 
-int		ft_check(int ret, char **all, char **line, char *buff)
+int	ft_check(int ret, char **all, char **line, char *buff)
 {
 	if (ret >= 0)
 	{
